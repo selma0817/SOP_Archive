@@ -82,16 +82,21 @@ Use the Paintbrush Tool
    - Add missing pixels by tracing brighter areas in the TOF image.  
 
 Examples:  
-- **Discontinuity Example**:  
+- **Discontinuity**:  
   ![Discontinuity](discontinuity_seg.png)  
-- **Overlapping Segments**:  
+- **Sticking Vessels**:  
   ![Overlap](image-4.png)  
-- **Correcting Missing Pixels**:  
-Follow brighter pixels to trace vessel peripheries.  Add pixels to labels as needed:  
-  ![Add Pixels](image-5.png)  
+- **Could Remove Some Pixels in the Middle**:  
+  ![Remove Some Pixels](image-5.png)  
+- **Could add Pixel**:  
   ![Coverage Improvement](image-6.png)  
+- **Segmentation Completely missing**:  
+  ![Missing Segmentation](image-7.png) 
+- **Segmentation Coverage is not enough**:
+  ![Too Little Segmentation](image-8.png)  
 
 
+Follow brighter pixels to trace vessel peripheries.  Add pixels to labels as needed: 
 ## Post-QA Steps  
 
 1. Save the corrected segmentation in a folder named with your initials and the QA date (e.g., `YP_123024_QA_RAW`).  

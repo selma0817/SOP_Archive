@@ -1,53 +1,102 @@
-# SOP for Quality Assurance of TOF segmentation for RAW 
+# SOP for Quality Assurance (QA) of TOF Segmentation for RAW  
 
+## Introduction  
+This QA process is essential for the `vseg2tortuosity` pipeline, hosted at (add GitHub link). The pipeline utilizes skeletonized segmentation to fit splines and derives tortuosity metrics from the curvature of the splines.  
 
-## Introduction
-This QA process is required for vseg2tortuosity pipeline at (add github link). This pipeline uses skeletonized segmentation to fit spline and uses the curvature of spline to derive tortuosity metrics. 
+## Why Perform QA on TOF Segmentation of the Circle of Willis?  
+Low-quality segmentation, such as discontinuities in segmenting the Internal Carotid Artery (ICA), can lead to poor skeletonization and inaccurately fitted splines. This, in turn, negatively impacts the derived tortuosity metrics.  
 
-## Why do we need QA on TOF segmentation of Circle of Willis 
-low quality segmentation e.g. discontinuity in segmenting ICA could lead to bad skeletonization and resulting in very poorly fitted spline. 
+## How to Perform QA on TOF Segmentation  
 
+### Tools Required  
+We use **ITK-SNAP** for quality assurance.  
 
-## How to do QA on TOF Circle of Willis Segmentation
-we use itk-snap to do the quality assurance. you should download the nifti files for participant you are doing quality assurance on (we will have a excel table for it) from our server as a zip file, unzip this file and work on this local copy of the original data. after finishing your edits, you can save the files with your initials and date and put it under `/mnt/WorkSpaces/Your_Name` on our server.
+### Steps to Begin QA  
+1. **Download Segmentation Files**:  
+   - Retrieve the relevant NIfTI files for the participant from our server as a zip file.  
+   - Unzip the file and work on a local copy of the original data.  
 
-**how to load input image**
-For each subject with subject id `806175` without loss of generality, we have 2 corresponding images: `806175_TOF_resampled.nii.gz` (the TOF image of the particiapnt) and `806175_TOF_eICAB_CW.nii.gz` (the segmentation of Cirlce of Willis correspond to that TOF image). 
+2. **Post-QA File Management**:  
+   - Save your edits with your initials and the date, e.g., `YP_123024_QA_RAW`.  
+   - Upload the corrected files to your designated workspace on the server at `/mnt/WorkSpaces/Your_Name`.  
 
+3. **Documentation**:  
+   - Record participant ID, QA completion date, and your initials in an Excel file. Example:  
 
-* step 1: We load the resampled image as main image first by opening itk-snap and drag this image to itksnap.  
-![example resampled.nii.gz](image.png)
-* step 2: we then add the corresponding segmentation by dragging the eICAB_CW image to itk-snap, a prompt box will pop up asking how do we like to load this image, select load as segmentation.
-![alt text](image-1.png)
-* step 3: click the `update` button in the bottom left. after clicking it, you will see the segmentation in 3d. 
-![alt text](image-2.png)
+     | Participant ID | QA Date  | Initials |  
+     |----------------|----------|----------|  
+     | 806175         | 12/30/24 | YP       |  
 
-**how to use paintbrush tool to correct segmentation**
-we uses `itk-snap` to do quality assurance by adding and removing pixels at where the automatic segmentation of left and right ICA (Internal Carotid Artery) fails.
+---
 
-after loading the images, go to main tool bar on the left side of the itk-snap and click the 4th icon named paint brush mode. 
-![alt text](image-3.png)
-In the Paintbrush Inspector column below, you can choose any brush style you want but i recommand keeping brush size to be either 1 or 2 for greater precision. 
+### Loading Images into ITK-SNAP  
+For each participant, you will work with two files:  
+- **`TOF_resampled.nii.gz`**: TOF image of the participant.  
+- **`TOF_eICAB_CW.nii.gz`**: Segmentation of the Circle of Willis corresponding to the TOF image.  
 
+#### Steps:  
+1. **Load the Resampled Image**:  
+   - Open ITK-SNAP and drag the `TOF_resampled.nii.gz` file into the interface.  
 
-in segmentation column, you can choose which label your current paintbrush is using. We only need Label 1 (red, left ICA), Label 2 (green, right ICA), and Clear Label(black) since we are only focusing on doing quality assurance on ICA and we use Clear label as an eraser. 
+2. **Add the Segmentation**:  
+   - Drag the `TOF_eICAB_CW.nii.gz` file into ITK-SNAP.  
+   - When prompted, select "Load as Segmentation."  
 
+3. **Update the View**:  
+   - Click the `Update` button at the bottom left to display the segmentation in 3D.  
 
-you will typically edit in upper left panel (assume we have 2*2 panels), after adding or removing some pixels, click update button again to check how these changes reflect in the 3d-segmentation as a sanity check that you are editing in the place you desired. 
+---
 
-**what error to correct in the segmenation**
-you should look for obvious discontinuity in left and right ica and cases when a vessel seems to stick together. you check this in 3d view of the segmentation
+### Editing the Segmentation  
 
-![alt text](discontinuity_seg.png)
-![alt text](image-4.png)
+#### Using the Paintbrush Tool  
+1. Activate the **Paintbrush Mode**:  
+   - In the left toolbar, click the 4th icon (Paintbrush Mode).  
 
-try follow the brigher pixel in the tof as trace when deciding which part of the image should be in segmentation and which part should not. for example here, you might want to remove some of the pixel on the green label 
-![alt text](image-5.png)
-you might want to add some pixel to both red and green label in this example 
-![alt text](image-6.png)
+2. Configure the Paintbrush:  
+   - Choose a brush size of 1 or 2 for greater precision.  
 
-red label is clearly missing in this example, you can trace the peripheral of the ICA by following the ligher pixel using your penbrush tool. 
-![alt text](image-7.png)
+3. Select the Label:  
+   - Label 1 (Red): Left ICA.  
+   - Label 2 (Green): Right ICA.  
+   - **Clear Label (Black)**: Used as an eraser.  
 
-red label is present but the coverage is very poor. you could add more pixel to red label here.
-![alt text](image-8.png)
+4. Edit the Segmentation:  
+   - Work primarily in the upper-left panel (assumes a 2×2 panel layout).  
+   - After making changes, click `Update` to verify edits in the 3D view.  
+
+---
+
+### Common Errors to Correct  
+
+1. **Discontinuities in Left/Right ICA**:  
+   - Look for breaks in the vessel path.  
+
+2. **Sticking Vessels**:  
+   - Ensure vessels do not erroneously merge.  
+
+3. **Missing Coverage**:  
+   - Add missing pixels by tracing brighter areas in the TOF image.  
+
+Examples:  
+- **Discontinuity Example**:  
+  ![Discontinuity](discontinuity_seg.png)  
+- **Overlapping Segments**:  
+  ![Overlap](image-4.png)  
+- **Correcting Missing Pixels**:  
+  - Follow brighter pixels to trace vessel peripheries.  
+  - Add pixels to labels as needed:  
+    ![Add Pixels](image-5.png)  
+    ![Coverage Improvement](image-6.png)  
+
+---
+
+### Post-QA Steps  
+
+1. Save the corrected segmentation in a folder named with your initials and the QA date (e.g., `YP_123024_QA_RAW`).  
+2. Upload the folder to your workspace on the server at `/mnt/WorkSpaces/Your_Name`.  
+3. Update the QA record in the Excel file.  
+
+---
+
+This document ensures a systematic QA process to maintain high-quality segmentation and accurate downstream analyses.

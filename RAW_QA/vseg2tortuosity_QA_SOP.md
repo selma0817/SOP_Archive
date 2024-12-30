@@ -14,7 +14,7 @@
 This QA process is essential for the ([vseg2tortuosity](https://github.com/tetra-tools/vseg2tortuosity)) pipeline. The pipeline utilizes skeletonized segmentation to fit splines and derives tortuosity metrics from the curvature of the splines.  
 
 ## Why Perform QA on TOF Segmentation of the Circle of Willis?  
-Low-quality segmentation, such as discontinuities in segmenting the Internal Carotid Artery (ICA), can lead to poor skeletonization and inaccurately fitted splines. This, in turn, negatively impacts the derived tortuosity metrics.  
+Low-quality segmentation such as discontinuities in segmenting the Internal Carotid Artery (ICA), can lead to poor skeletonization and inaccurately fitted splines. Our tuortuosity metrics depends on the curvature of the fitted spline so if the spline doesn't fit well to the segmentation, we don't have good tortuosity estimation. 
 
 ## Steps to Begin QA  
 1. **Download Segmentation Files**:  

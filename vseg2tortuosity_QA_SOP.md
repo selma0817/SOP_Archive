@@ -1,7 +1,24 @@
 # SOP for Quality Assurance (QA) of TOF Segmentation for RAW  
 
+## Table of Contents
+
+
+- [SOP for Quality Assurance (QA) of TOF Segmentation for RAW](#sop-for-quality-assurance-qa-of-tof-segmentation-for-raw)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Why Perform QA on TOF Segmentation of the Circle of Willis?](#why-perform-qa-on-tof-segmentation-of-the-circle-of-willis)
+  - [How to Perform QA on TOF Segmentation](#how-to-perform-qa-on-tof-segmentation)
+    - [Tools Required](#tools-required)
+    - [Steps to Begin QA](#steps-to-begin-qa)
+    - [Loading Images into ITK-SNAP](#loading-images-into-itk-snap)
+      - [Steps:](#steps)
+    - [Editing the Segmentation](#editing-the-segmentation)
+      - [Using the Paintbrush Tool](#using-the-paintbrush-tool)
+    - [Common Errors to Correct](#common-errors-to-correct)
+    - [Post-QA Steps](#post-qa-steps)
+   
 ## Introduction  
-This QA process is essential for the `vseg2tortuosity` pipeline, hosted at (add GitHub link). The pipeline utilizes skeletonized segmentation to fit splines and derives tortuosity metrics from the curvature of the splines.  
+This QA process is essential for the `vseg2tortuosity` pipeline, hosted at ([add GitHub link](https://github.com/tetra-tools/vseg2tortuosity)). The pipeline utilizes skeletonized segmentation to fit splines and derives tortuosity metrics from the curvature of the splines.  
 
 ## Why Perform QA on TOF Segmentation of the Circle of Willis?  
 Low-quality segmentation, such as discontinuities in segmenting the Internal Carotid Artery (ICA), can lead to poor skeletonization and inaccurately fitted splines. This, in turn, negatively impacts the derived tortuosity metrics.  

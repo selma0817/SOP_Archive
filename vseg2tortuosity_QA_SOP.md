@@ -32,7 +32,7 @@ Low-quality segmentation, such as discontinuities in segmenting the Internal Car
      |----------------|----------|----------|  
      | 806175         | 12/30/24 | YP       |  
 
----
+
 
 ## Loading Images into ITK-SNAP  
 For each participant, you will work with two files:  
@@ -50,7 +50,6 @@ For each participant, you will work with two files:
 3. **Update the View**:  
    - Click the `Update` button at the bottom left to display the segmentation in 3D.  
 
----
 
 ## Editing the Segmentation  
 
@@ -70,7 +69,6 @@ Use the Paintbrush Tool
    - Work primarily in the upper-left panel (assumes a 2×2 panel layout).  
    - After making changes, click `Update` to verify edits in the 3D view.  
 
----
 
 ## Common Errors to Correct  
 
@@ -93,7 +91,6 @@ Follow brighter pixels to trace vessel peripheries.  Add pixels to labels as nee
   ![Add Pixels](image-5.png)  
   ![Coverage Improvement](image-6.png)  
 
----
 
 ## Post-QA Steps  
 

@@ -11,7 +11,7 @@
 - [Post-QA Steps](#post-qa-steps)
    
 ## Introduction  
-This QA process is essential for the `vseg2tortuosity` pipeline, hosted at ([add GitHub link](https://github.com/tetra-tools/vseg2tortuosity)). The pipeline utilizes skeletonized segmentation to fit splines and derives tortuosity metrics from the curvature of the splines.  
+This QA process is essential for the ([vseg2tortuosity](https://github.com/tetra-tools/vseg2tortuosity)) pipeline. The pipeline utilizes skeletonized segmentation to fit splines and derives tortuosity metrics from the curvature of the splines.  
 
 ## Why Perform QA on TOF Segmentation of the Circle of Willis?  
 Low-quality segmentation, such as discontinuities in segmenting the Internal Carotid Artery (ICA), can lead to poor skeletonization and inaccurately fitted splines. This, in turn, negatively impacts the derived tortuosity metrics.  

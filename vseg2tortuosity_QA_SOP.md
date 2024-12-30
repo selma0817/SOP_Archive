@@ -64,7 +64,7 @@ Use the Paintbrush Tool
 3. Select the Label:  
    - Label 1 (Red): Left ICA.  
    - Label 2 (Green): Right ICA.  
-   - **Clear Label (Black)**: Used as an eraser.  
+   - Clear Label (Black): Used as an eraser.  
 
 4. Edit the Segmentation:  
    - Work primarily in the upper-left panel (assumes a 2×2 panel layout).  

@@ -1,21 +1,14 @@
-# SOP for Quality Assurance (QA) of TOF Segmentation for RAW  
 
 ## Table of Contents
 
-
-- [SOP for Quality Assurance (QA) of TOF Segmentation for RAW](#sop-for-quality-assurance-qa-of-tof-segmentation-for-raw)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Why Perform QA on TOF Segmentation of the Circle of Willis?](#why-perform-qa-on-tof-segmentation-of-the-circle-of-willis)
-  - [How to Perform QA on TOF Segmentation](#how-to-perform-qa-on-tof-segmentation)
-    - [Tools Required](#tools-required)
-    - [Steps to Begin QA](#steps-to-begin-qa)
-    - [Loading Images into ITK-SNAP](#loading-images-into-itk-snap)
-      - [Steps:](#steps)
-    - [Editing the Segmentation](#editing-the-segmentation)
-      - [Using the Paintbrush Tool](#using-the-paintbrush-tool)
-    - [Common Errors to Correct](#common-errors-to-correct)
-    - [Post-QA Steps](#post-qa-steps)
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+- [Why Perform QA on TOF Segmentation of the Circle of Willis?](#why-perform-qa-on-tof-segmentation-of-the-circle-of-willis)
+- [Steps to Begin QA](#steps-to-begin-qa)
+- [Loading Images into ITK-SNAP](#loading-images-into-itk-snap)
+- [Editing the Segmentation](#editing-the-segmentation)
+- [Common Errors to Correct](#common-errors-to-correct)
+- [Post-QA Steps](#post-qa-steps)
    
 ## Introduction  
 This QA process is essential for the `vseg2tortuosity` pipeline, hosted at ([add GitHub link](https://github.com/tetra-tools/vseg2tortuosity)). The pipeline utilizes skeletonized segmentation to fit splines and derives tortuosity metrics from the curvature of the splines.  
@@ -23,12 +16,7 @@ This QA process is essential for the `vseg2tortuosity` pipeline, hosted at ([add
 ## Why Perform QA on TOF Segmentation of the Circle of Willis?  
 Low-quality segmentation, such as discontinuities in segmenting the Internal Carotid Artery (ICA), can lead to poor skeletonization and inaccurately fitted splines. This, in turn, negatively impacts the derived tortuosity metrics.  
 
-## How to Perform QA on TOF Segmentation  
-
-### Tools Required  
-We use **ITK-SNAP** for quality assurance.  
-
-### Steps to Begin QA  
+## Steps to Begin QA  
 1. **Download Segmentation Files**:  
    - Retrieve the relevant NIfTI files for the participant from our server as a zip file.  
    - Unzip the file and work on a local copy of the original data.  
@@ -46,12 +34,12 @@ We use **ITK-SNAP** for quality assurance.
 
 ---
 
-### Loading Images into ITK-SNAP  
+## Loading Images into ITK-SNAP  
 For each participant, you will work with two files:  
 - **`TOF_resampled.nii.gz`**: TOF image of the participant.  
 - **`TOF_eICAB_CW.nii.gz`**: Segmentation of the Circle of Willis corresponding to the TOF image.  
 
-#### Steps:  
+
 1. **Load the Resampled Image**:  
    - Open ITK-SNAP and drag the `TOF_resampled.nii.gz` file into the interface.  
 
@@ -64,9 +52,9 @@ For each participant, you will work with two files:
 
 ---
 
-### Editing the Segmentation  
+## Editing the Segmentation  
 
-#### Using the Paintbrush Tool  
+Use the Paintbrush Tool  
 1. Activate the **Paintbrush Mode**:  
    - In the left toolbar, click the 4th icon (Paintbrush Mode).  
 
@@ -84,7 +72,7 @@ For each participant, you will work with two files:
 
 ---
 
-### Common Errors to Correct  
+## Common Errors to Correct  
 
 1. **Discontinuities in Left/Right ICA**:  
    - Look for breaks in the vessel path.  
@@ -101,19 +89,14 @@ Examples:
 - **Overlapping Segments**:  
   ![Overlap](image-4.png)  
 - **Correcting Missing Pixels**:  
-  - Follow brighter pixels to trace vessel peripheries.  
-  - Add pixels to labels as needed:  
-    ![Add Pixels](image-5.png)  
-    ![Coverage Improvement](image-6.png)  
+Follow brighter pixels to trace vessel peripheries.  Add pixels to labels as needed:  
+  ![Add Pixels](image-5.png)  
+  ![Coverage Improvement](image-6.png)  
 
 ---
 
-### Post-QA Steps  
+## Post-QA Steps  
 
 1. Save the corrected segmentation in a folder named with your initials and the QA date (e.g., `YP_123024_QA_RAW`).  
 2. Upload the folder to your workspace on the server at `/mnt/WorkSpaces/Your_Name`.  
 3. Update the QA record in the Excel file.  
-
----
-
-This document ensures a systematic QA process to maintain high-quality segmentation and accurate downstream analyses.
